@@ -12,7 +12,6 @@ export default function CalendarGrid({
 }) {
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-    // Helper to check if a date falls within the selected range
     const isDateSelected = (date) => {
         if (!selectionRange) return false;
         const time = date.getTime();
@@ -20,14 +19,22 @@ export default function CalendarGrid({
     };
 
     return (
-        <div className="w-full bg-white rounded shadow p-4">
-            {/* Weekday Labels */}
-            <div className="grid grid-cols-7 mb-2 text-center font-semibold text-gray-500">
-                {daysOfWeek.map(day => <div key={day}>{day}</div>)}
+        <div className="w-full bg-white rounded-xl shadow-md p-5 border border-gray-100">
+
+            {/* Week Labels */}
+            <div className="grid grid-cols-7 mb-3 text-center text-sm font-semibold text-gray-500">
+                {daysOfWeek.map(day => (
+                    <div key={day} className="py-1">
+                        {day}
+                    </div>
+                ))}
             </div>
 
-            {/* 42-Day Grid */}
-            <div className="grid grid-cols-7" onMouseLeave={handleMouseUp}>
+            {/* Calendar Grid */}
+            <div
+                className="grid grid-cols-7 gap-2"
+                onMouseLeave={handleMouseUp}
+            >
                 {grid.map((date, index) => (
                     <DayCell
                         key={index}

@@ -13,7 +13,6 @@ export default function StatsHeader({ bookings, currentMonth }) {
         const start = new Date(b.checkIn).setHours(0, 0, 0, 0);
         const end = new Date(b.checkOut).setHours(0, 0, 0, 0);
 
-        // overlap logic
         return start <= monthEnd && end > monthStart;
     });
 
@@ -31,20 +30,24 @@ export default function StatsHeader({ bookings, currentMonth }) {
             : 0;
 
     return (
-        <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="bg-white p-4 rounded shadow">
-                <p className="text-gray-500 text-sm">Bookings in Month</p>
-                <p className="text-2xl font-bold">{totalBookings}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+
+            {/* Card */}
+            <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <p className="text-gray-500 text-sm mb-1">Bookings</p>
+                <p className="text-2xl font-bold text-gray-800">{totalBookings}</p>
             </div>
 
-            <div className="bg-white p-4 rounded shadow">
-                <p className="text-gray-500 text-sm">Avg. Stay</p>
-                <p className="text-2xl font-bold">{avgStay} Nights</p>
+            {/* Card */}
+            <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <p className="text-gray-500 text-sm mb-1">Avg Stay</p>
+                <p className="text-2xl font-bold text-gray-800">{avgStay} Nights</p>
             </div>
 
-            <div className="bg-white p-4 rounded shadow">
-                <p className="text-gray-500 text-sm">Max Capacity</p>
-                <p className="text-2xl font-bold">10 Rooms</p>
+            {/* Card */}
+            <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <p className="text-gray-500 text-sm mb-1">Capacity</p>
+                <p className="text-2xl font-bold text-gray-800">10 Rooms</p>
             </div>
         </div>
     );

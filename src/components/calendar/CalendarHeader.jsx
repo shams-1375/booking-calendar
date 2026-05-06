@@ -13,15 +13,41 @@ export default function CalendarHeader({ currentMonth, setCurrentMonth }) {
         setCurrentMonth(new Date());
     };
 
-    const monthYearString = currentMonth.toLocaleDateString('default', { month: 'long', year: 'numeric' });
+    const monthYearString = currentMonth.toLocaleDateString('default', {
+        month: 'long',
+        year: 'numeric'
+    });
 
     return (
-        <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-800">{monthYearString}</h2>
-            <div className="space-x-2">
-                <button onClick={handlePrev} className="px-3 py-1 border rounded hover:bg-gray-100">Prev</button>
-                <button onClick={handleToday} className="px-3 py-1 border rounded hover:bg-gray-100">Today</button>
-                <button onClick={handleNext} className="px-3 py-1 border rounded hover:bg-gray-100">Next</button>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+
+            {/* Title */}
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">
+                {monthYearString}
+            </h2>
+
+            {/* Controls */}
+            <div className="flex gap-2">
+                <button
+                    onClick={handlePrev}
+                    className="px-4 py-1.5 text-sm rounded-lg border border-gray-300 hover:bg-gray-100 transition"
+                >
+                    ← Prev
+                </button>
+
+                <button
+                    onClick={handleToday}
+                    className="px-4 py-1.5 text-sm rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition"
+                >
+                    Today
+                </button>
+
+                <button
+                    onClick={handleNext}
+                    className="px-4 py-1.5 text-sm rounded-lg border border-gray-300 hover:bg-gray-100 transition"
+                >
+                    Next →
+                </button>
             </div>
         </div>
     );
