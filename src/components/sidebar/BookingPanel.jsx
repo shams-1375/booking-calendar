@@ -15,7 +15,7 @@ export default function BookingPanel({ selectionRange, bookings }) {
 
     const title = isSingleDay
         ? formatDateString(selectionRange.start)
-        : `${formatDateString(selectionRange.start)} → ${formatDateString(selectionRange.end)}`;
+        : `${formatDateString(selectionRange.start)}  to  ${formatDateString(selectionRange.end)}`;
 
     // filter bookings
     const filteredBookings = bookings.filter(b => {
@@ -35,7 +35,7 @@ export default function BookingPanel({ selectionRange, bookings }) {
             badge: 'bg-blue-100 text-blue-700',
         },
         checked_in: {
-            card: 'bg-green-100 border-green-200',
+            card: 'bg-green-100 border-green-300',
             badge: 'bg-green-200 text-green-700',
         },
         checked_out: {
@@ -49,8 +49,8 @@ export default function BookingPanel({ selectionRange, bookings }) {
 
             {/* HEADER */}
             <div className="mb-5 border-b pb-3">
-                <h3 className="text-xl font-bold text-gray-800">Bookings</h3>
-                <p className="text-sm text-gray-500 mt-1">{title}</p>
+                <h3 className="text-xl font-bold text-gray-800">Bookings as of</h3>
+                <p className="text-md text-gray-600 mt-1">{title}</p>
             </div>
 
             {/* EMPTY */}
@@ -86,7 +86,7 @@ export default function BookingPanel({ selectionRange, bookings }) {
                                 </div>
 
                                 {/* ROOM + SOURCE */}
-                                <div className="flex justify-between text-sm text-gray-600 mt-1">
+                                <div className="flex justify-between text-sm text-gray-600 mt-2">
                                     <span>Room {b.roomNumber} • {b.roomType}</span>
                                     <span className="text-xs bg-white/60 px-2 py-0.5 rounded">
                                         {b.source}
